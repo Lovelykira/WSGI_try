@@ -12,7 +12,7 @@ def form(env):
     d_d = parse_qs(d)
 
 
-    return d_d.get(b'a')[0]
+    return d_d.get(b'a')[0].decode('UTF-8')
     #return "form"
 
 route = {'form':form}
@@ -34,7 +34,7 @@ def app(env, resp_start):
     res = ""
     if fn is not None:
         res = fn(env)
-    
+
 
     with open('index.html','r') as f:
         #html = (f.read() % (qs.keys(),)).encode('UTF-8')
